@@ -1,0 +1,71 @@
+{
+  "name": "fdroid-repo-github-releases",
+  "description": "Host your GitHub releases as F-Droid repo",
+  "version": "0.1.0",
+  "main": "src/handler.ts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.9.0 <13.0.0",
+    "yarn": ">=1.12.3"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "aws-lambda": "^0.1.2",
+    "aws-sdk": "^2.497.0",
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0",
+    "io-ts": "^1.10.4",
+    "mime": "^2.4.3",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.3.7",
+    "ramda": "^0.26.1",
+    "source-map-support": "^0.5.12",
+    "uuid": "^3.3.3",
+    "winston": "^3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.26",
+    "@types/dotenv": "^6.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.5",
+    "@types/node-fetch": "^2.3.3",
+    "@types/ramda": "^0.26.18",
+    "husky": "^2.3.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.0",
+    "serverless": "^1.48.2",
+    "serverless-plugin-typescript": "^1.1.9",
+    "shx": "^0.3.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "clean": "shx rm -Rf build node_modules",
+    "dev": "cross-env NODE_ENV=development nodemon -r ts-node/register src/handler.ts",
+    "start": "cross-env NODE_ENV=production node ./build/handler.js",
+    "build": "tsc -p .",
+    "format": "prettier \"src/**/*.{js,ts,tsx}\" --write",
+    "lint": "ts-node node_modules/.bin/tslint -p . -t verbose",
+    "test": "chamber exec fdroid-repo-github-releases -- mocha",
+    "deploy": "chamber exec fdroid-repo-github-releases -- serverless deploy",
+    "serverless": "chamber exec fdroid-repo-github-releases -- serverless",
+    "chamber": "chamber exec fdroid-repo-github-releases --pristine -- sh -c set"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "parser": "typescript",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx)\"",
+      "pre-push": "yarn lint && yarn run -s build && yarn test"
+    }
+  }
+}

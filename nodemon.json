@@ -1,0 +1,5 @@
+{
+  "watch": ["src", ".env", "package.json", "yarn.lock"],
+  "delay": 2000,
+  "runOnChangeOnly": false
+}

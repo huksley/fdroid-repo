@@ -1,0 +1,30 @@
+service: fdroid-repo-github-releases
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  stage: dev
+  # optional, in MB, default is 1024, min is 128
+  memorySize: 128
+  # optional, in seconds, default is 6
+  timeout: 30
+  # optional, default is true
+  versionFunctions: false
+
+plugins:
+  - serverless-plugin-typescript
+
+package:
+  exclude:
+    - "node_modules/aws-sdk/**"
+    - "node_modules/aws-lambda/**"
+
+functions:
+  handleHttp:
+    handler: src/handler.httpHandler
+    events:
+      - http:
+          path: repo
+          method: get
+          cors: true

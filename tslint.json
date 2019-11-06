@@ -1,0 +1,37 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": [
+    "./tslint"
+  ],
+  "linterOptions": {
+    "format": "verbose"
+  },
+  "jsRules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "no-object-literal-type-assertion": false,
+    "max-classes-per-file": false,
+    "arrow-parens": false,
+    "no-string-literal": false,
+    "interface-name": false
+  },
+  "rules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "no-object-literal-type-assertion": false,
+    "max-classes-per-file": false,
+    "arrow-parens": false,
+    "no-string-literal": false,
+    "interface-name": false,
+    "no-winston-import": true,
+    "no-transitive-dependencies": true
+  }
+}
