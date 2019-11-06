@@ -5,7 +5,7 @@ import { config } from './config'
 
 import fetch from 'node-fetch'
 
-export type ReleaseAsset = {
+export interface ReleaseAsset {
   url: string
   id: number
   name: string
@@ -13,7 +13,7 @@ export type ReleaseAsset = {
   size: number
 }
 
-export type Release = {
+export interface Release {
   url: string
   id: number
   tag_name: string
