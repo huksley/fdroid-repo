@@ -6,7 +6,7 @@ export const defaultConfig = {
   NODE_ENV: 'development' as 'development' | 'product',
   LOG_LEVEL: 'info' as 'info' | 'debug' | 'warn' | 'error',
   AWS_REGION: 'eu-west-1',
-  REPO_USER: 'huksley',
+  REPO_OWNER: 'huksley',
   REPO_PROJECT: 'numgenui',
 }
 
