@@ -16,7 +16,7 @@
     "dotenv": "^8.0.0",
     "io-ts": "^1.10.4",
     "mime": "^2.4.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-fetch": "^2.3.7",
     "ramda": "^0.26.1",
     "source-map-support": "^0.5.12",
